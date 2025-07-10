@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telemedicine Platform - UI Mockup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7F9FC;
+            color: #495057;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background: white;
+            border-right: 1px solid #D8DEE4;
+            padding: 24px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            padding: 0 24px 32px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #4A90E2;
+            border-bottom: 1px solid #D8DEE4;
+            margin-bottom: 24px;
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 8px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 24px;
+            text-decoration: none;
+            color: #495057;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #4A90E2;
+            color: white;
+        }
+
+        .nav-icon {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 24px;
+        }
+
+        .header {
+            background: white;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #495057;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 12px;
+        }
+
+        .toggle-btn {
+            padding: 8px 16px;
+            border: 1px solid #D8DEE4;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-btn.active {
+            background: #4A90E2;
+            color: white;
+            border-color: #4A90E2;
+        }
+
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #D8DEE4;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .card-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            color: #4A90E2;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .card-content {
+            margin-bottom: 16px;
+        }
+
+        .card-meta {
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 12px;
+        }
+
+        .card-description {
+            font-size: 16px;
+            color: #495057;
+            margin-bottom: 16px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: #4A90E2;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #357abd;
+        }
+
+        .btn-secondary {
+            background: #50E3C2;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #40d4b3;
+        }
+
+        .btn-warning {
+            background: #F5A623;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #e6951f;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #4A90E2;
+            border: 1px solid #4A90E2;
+        }
+
+        .btn-outline:hover {
+            background: #4A90E2;
+            color: white;
+        }
+
+        /* Status Indicators */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-online {
+            background: #50E3C2;
+            color: white;
+        }
+
+        .status-pending {
+            background: #F5A623;
+            color: white;
+        }
+
+        .status-urgent {
+            background: #dc3545;
+            color: white;
+        }
+
+        /* Tables */
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #D8DEE4;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #D8DEE4;
+        }
+
+        .table th {
+            font-weight: 600;
+            color: #495057;
+            background: #F7F9FC;
+        }
+
+        /* Video Call Interface */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: none;
+            z-index: 1000;
+        }
+
+        .video-container.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-main {
+            flex: 1;
+            position: relative;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-placeholder {
+            width: 300px;
+            height: 200px;
+            background: #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .video-self {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 200px;
+            height: 150px;
+            background: #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .video-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.8);
+            gap: 16px;
+        }
+
+        .control-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .control-btn.mic {
+            background: #4A90E2;
+            color: white;
+        }
+
+        .control-btn.video {
+            background: #4A90E2;
+            color: white;
+        }
+
+        .control-btn.end {
+            background: #dc3545;
+            color: white;
+        }
+
+        .control-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6c757d;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #D8DEE4;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #4A90E2;
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #D8DEE4;
+            border-radius: 6px;
+            font-size: 16px;
+            min-height: 100px;
+            resize: vertical;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: #4A90E2;
+        }
+
+        /* Messaging */
+        .messaging-container {
+            display: flex;
+            height: 600px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #D8DEE4;
+        }
+
+        .conversation-list {
+            width: 300px;
+            border-right: 1px solid #D8DEE4;
+            overflow-y: auto;
+        }
+
+        .conversation-item {
+            padding: 16px;
+            border-bottom: 1px solid #D8DEE4;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .conversation-item:hover {
+            background: #F7F9FC;
+        }
+
+        .conversation-item.active {
+            background: #4A90E2;
+            color: white;
+        }
+
+        .conversation-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message-header {
+            padding: 16px;
+            border-bottom: 1px solid #D8DEE4;
+            font-weight: 600;
+        }
+
+        .message-thread {
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            max-width: 70%;
+        }
+
+        .message.sent {
+            background: #4A90E2;
+            color: white;
+            margin-left: auto;
+        }
+
+        .message.received {
+            background: #F7F9FC;
+            border: 1px solid #D8DEE4;
+        }
+
+        .message-input {
+            padding: 16px;
+            border-top: 1px solid #D8DEE4;
+            display: flex;
+            gap: 12px;
+        }
+
+        .message-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #D8DEE4;
+            border-radius: 6px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .messaging-container {
+                height: 400px;
+            }
+
+            .conversation-list {
+                width: 200px;
+            }
+        }
+
+        /* Hide elements based on view */
+        .provider-only {
+            display: none;
+        }
+
+        .parent-only {
+            display: block;
+        }
+
+        .view-provider .provider-only {
+            display: block;
+        }
+
+        .view-provider .parent-only {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i data-feather="heart"></i>
+                KidsCare Portal
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-section="dashboard">
+                        <i data-feather="home" class="nav-icon"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item parent-only">
+                    <a href="#" class="nav-link" data-section="child-health">
+                        <i data-feather="user" class="nav-icon"></i>
+                        My Child's Health
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="appointments">
+                        <i data-feather="calendar" class="nav-icon"></i>
+                        Appointments
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="messages">
+                        <i data-feather="message-square" class="nav-icon"></i>
+                        Messages
+                    </a>
+                </li>
+                <li class="nav-item provider-only">
+                    <a href="#" class="nav-link" data-section="patients">
+                        <i data-feather="users" class="nav-icon"></i>
+                        Patients
+                    </a>
+                </li>
+                <li class="nav-item provider-only">
+                    <a href="#" class="nav-link" data-section="schedule">
+                        <i data-feather="calendar" class="nav-icon"></i>
+                        Schedule Management
+                    </a>
+                </li>
+                <li class="nav-item parent-only">
+                    <a href="#" class="nav-link" data-section="urgent-care">
+                        <i data-feather="alert-triangle" class="nav-icon"></i>
+                        Urgent Care
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <h1 id="page-title">Dashboard</h1>
+                <div class="view-toggle">
+                    <button class="toggle-btn active" onclick="switchView('parent')">Parent View</button>
+                    <button class="toggle-btn" onclick="switchView('provider')">Provider View</button>
+                </div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div id="dashboard" class="section">
+                <!-- Parent Dashboard -->
+                <div class="parent-only">
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <i data-feather="video" class="card-icon"></i>
+                                <h3 class="card-title">Upcoming Appointment</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-meta">Tomorrow at 10:30 AM</div>
+                                <div class="card-description">Video call with Dr. Evans</div>
+                                <button class="btn btn-primary" onclick="startVideoCall()">
+                                    <i data-feather="video" style="margin-right: 8px; width: 16px; height: 16px;"></i>
+                                    Join Call
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <i data-feather="message-square" class="card-icon"></i>
+                                <h3 class="card-title">New Messages</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-meta">You have 2 new messages</div>
+                                <div class="card-description">From Dr. Evans: "The test results are in..."</div>
+                                <button class="btn btn-outline" onclick="showSection('messages')">Go to Messages</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <i data-feather="check-square" class="card-icon"></i>
+                                <h3 class="card-title">Health Tasks</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-description">
+                                    <label style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <input type="checkbox" style="margin-right: 8px;">
+                                        Log Emma's sleep for today
+                                    </label>
+                                    <label style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <input type="checkbox" style="margin-right: 8px;">
+                                        Administer medication: Albuterol
+                                    </label>
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="checkbox" style="margin-right: 8px;">
+                                        Record daily temperature
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <i data-feather="alert-triangle" class="card-icon" style="color: #F5A623;"></i>
+                                <h3 class="card-title">Need Urgent Care?</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-description">For urgent but non-emergency concerns, connect with the next available provider.</div>
+                                <button class="btn btn-warning">
+                                    <i data-feather="phone" style="margin-right: 8px; width: 16px; height: 16px;"></i>
+                                    Request Urgent Tele-Triage
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Provider Dashboard -->
+                <div class="provider-only">
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <i data-feather="clock" class="card-icon"></i>
+                                <h3 class="card-title">Today's Schedule</h3>
+                            </div>
+                            <div class="card-content">
+                                <div style="margin-bottom: 12px;">
+                                    <strong>10:00 AM</strong> - Emma Johnson (Age 8)
+                                    <button class="btn btn-primary" style="margin-left: 12px; padding: 4px 8px; font-size: 12px;">Start Call</button>
+                                </div>
+                                <div style="margin-bottom: 12px;">
+                                    <strong>11:30 AM</strong> - Michael Chen (Age 12)
+                                    <button class="btn btn-primary" style="margin-left: 12px; padding: 4px 8px; font-size: 12px;">Start Call</button>
+                                </div>
+                                <div>
+                                    <strong>2:00 PM</strong> - Sarah Williams (Age 5)
+                                    <button class="btn btn-primary" style="margin-left: 12px; padding: 4px 8px; font-size: 12px;">Start Call</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <i data-feather="search" class="card-icon"></i>
+                                <h3 class="card-title">Patient Search</h3>
+                            </div>
+                            <div class="card-content">
+                                <input type="text" class="form-input" placeholder="Search patients..." style="margin-bottom: 12px;">
+                                <button class="btn btn-outline">Search</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <i data-feather="inbox" class="card-icon"></i>
+                                <h3 class="card-title">Inbox Summary</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-description">
+                                    <div style="margin-bottom: 8px;">📧 3 Unread Patient Messages</div>
+                                    <div style="margin-bottom: 8px;">💬 1 New Post in Care Team Forums</div>
+                                    <div style="margin-bottom: 8px;">📋 2 Pending Task Reviews</div>
+                                </div>
+                                <button class="btn btn-outline">View All</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Child Health Section -->
+            <div id="child-health" class="section parent-only" style="display: none;">
+                <div class="table-container">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                        <h2>Emma's Health</h2>
+                        <div style="display: flex; gap: 12px;">
+                            <button class="btn btn-outline">Timeline</button>
+                            <button class="btn btn-outline">Health Records</button>
+                            <button class="btn btn-outline">Track Vitals</button>
+                            <button class="btn btn-outline">Health Library</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card-grid">
+                        <div class="card">
+                            <h3 style="margin-bottom: 16px;">Recent Milestones</h3>
+                            <div style="border-left: 3px solid #4A90E2; padding-left: 16px;">
+                                <div style="margin-bottom: 12px;">
+                                    <strong>Height/Weight Check</strong>
+                                    <div style="color: #6c757d; font-size: 14px;">March 15, 2024</div>
+                                </div>
+                                <div style="margin-bottom: 12px;">
+                                    <strong>Dental Checkup</strong>
+                                    <div style="color: #6c757d; font-size: 14px;">February 20, 2024</div>
+                                </div>
+                                <div>
+                                    <strong>Annual Physical</strong>
+                                    <div style="color: #6c757d; font-size: 14px;">January 10, 2024</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h3 style="margin-bottom: 16px;">Current Medications</h3>
+                            <div>
+                                <div style="margin-bottom: 12px;">
+                                    <strong>Albuterol Inhaler</strong>
+                                    <div style="color: #6c757d; font-size: 14px;">As needed for asthma</div>
+                                </div>
+                                <div>
+                                    <strong>Children's Multivitamin</strong>
+                                    <div style="color: #6c757d; font-size: 14px;">Once daily</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h3 style="margin-bottom: 16px;">Known Allergies</h3>
+                            <div>
+                                <span class="status-badge" style="background: #dc3545; margin-right: 8px;">Peanuts</span>
+                                <span class="status-badge" style="background: #dc3545;">Tree Nuts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Appointments Section -->
+            <div id="appointments" class="section" style="display: none;">
+                <div class="table-container">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                        <h2>Appointments</h2>
+                        <button class="btn btn-primary" onclick="showModal('schedule-modal')">
+                            <i data-feather="plus" style="margin-right: 8px; width: 16px; height: 16px;"></i>
+                            Schedule New Appointment
+                        </button>
+                    </div>
+                    
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Provider</th>
+                                <th>Date & Time</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Dr. Sarah Evans</td>
+                                <td>Tomorrow, 10:30 AM</td>
+                                <td>Video Consultation</td>
+                                <td><span class="status-badge status-pending">Upcoming</span></td>
+                                <td>
+                                    <button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">Join Call</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Dr. Michael Rodriguez</td>
+                                <td>March 20, 2:00 PM</td>
+                                <td>Follow-up</td>
+                                <td><span class="status-badge status-online">Confirmed</span></td>
+                                <td>
+                                    <button class="btn btn-outline" style="padding: 6px 12px; font-size: 12px;">Reschedule</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Dr. Sarah Evans</td>
+                                <td>March 5, 11:00 AM</td>
+                                <td>Annual Checkup</td>
+                                <td><span class="status-badge" style="background: #28a745; color: white;">Completed</span></td>
+                                <td>
+                                    <button class="btn btn-outline" style="padding: 6px 12px; font-size: 12px;">View Notes</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Messages Section -->
+            <div id="messages" class="section" style="display: none;">
+                <div class="messaging-container">
+                    <div class="conversation-list">
+                        <div class="conversation-item active">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Dr. Sarah Evans</div>
+                            <div style="font-size: 14px; color: #6c757d;">Test results are in...</div>
+                        </div>
+                        <div class="conversation-item">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Care Team</div>
+                            <div style="font-size: 14px; color: #6c757d;">Appointment reminder</div>
+                        </div>
+                        <div class="conversation-item">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Dr. Michael Rodriguez</div>
+                            <div style="font-size: 14px; color: #6c757d;">Follow-up questions</div>
+                        </div>
+                    </div>
+                    
+                    <div class="conversation-content">
+                        <div class="message-header">
+                            Conversation with Dr. Sarah Evans
+                        </div>
+                        
+                        <div class="message-thread">
+                            <div class="message received">
+                                <div style="font-weight: 600; margin-bottom: 4px;">Dr. Sarah Evans</div>
+                                <div>Hi! The test results are in and everything looks great. Emma's blood work shows normal values across the board.</div>
+                                <div style="font-size: 12px; color: #6c757d; margin-top: 4px;">Today, 2:30 PM</div>
+                            </div>
+                            
+                            <div class="message sent">
+                                <div>That's wonderful news! Thank you for letting me know so quickly.</div>
+                                <div style="font-size: 12px; margin-top: 4px;">Today, 2:35 PM</div>
+                            </div>
+                            
+                            <div class="message received">
+                                <div style="font-weight: 600; margin-bottom: 4px;">Dr. Sarah Evans</div>
+                                <div>You're welcome! I'll see you both tomorrow for our scheduled video call to discuss the results in more detail.</div>
+                                <div style="font-size: 12px; color: #6c757d; margin-top: 4px;">Today, 2:40 PM</div>
+                            </div>
+                        </div>
+                        
+                        <div class="message-input">
+                            <input type="text" placeholder="Type your message..." />
+                            <button class="btn btn-primary">
+                                <i data-feather="send" style="width: 16px; height: 16px;"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patients Section (Provider Only) -->
+            <div id="patients" class="section provider-only" style="display: none;">
+                <div class="table-container">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                        <h2>Patient Context View</h2>
+                        <div style="display: flex; gap: 12px;">
+                            <button class="btn btn-primary" onclick="showModal('new-note-modal')">
+                                <i data-feather="plus" style="margin-right: 8px; width: 16px; height: 16px;"></i>
+                                New Note
+                            </button>
+                            <button class="btn btn-outline">New Task</button>
+                            <button class="btn btn-outline">New Discussion</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Patient Banner -->
+                    <div class="card" style="margin-bottom: 24px; background: #f8f9fa;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h3 style="margin-bottom: 8px;">Emma Johnson</h3>
+                                <div style="color: #6c757d;">Age: 8 years • DOB: March 15, 2016</div>
+                                <div style="color: #dc3545; font-weight: 600; margin-top: 4px;">
+                                    ⚠️ Allergies: Peanuts, Tree Nuts
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn btn-outline">Chart Summary</button>
+                                <button class="btn btn-outline">Encounters</button>
+                                <button class="btn btn-outline">Messages</button>
+                                <button class="btn btn-outline">Care Team</button>
+                                <button class="btn btn-outline">Tasks</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Patient Details -->
+                    <div class="card-grid">
+                        <div class="card">
+                            <h3 style="margin-bottom: 16px;">Problem List</h3>
+                            <div>
+                                <div style="margin-bottom: 12px;">
+                                    <strong>Asthma</strong>
+                                    <div style="color: #6c757d; font-size: 14px;">Mild persistent - Well controlled</div>
+                                </div>
+                                <div>
+                                    <strong>Food Allergies</strong>
+                                    <div style="color: #6c757d; font-size: 14px;">Peanuts, Tree nuts - Severe</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h3 style="margin-bottom: 16px;">Recent Vitals</h3>
+                            <div>
+                                <div style="margin-bottom: 8px;">
+                                    <strong>Height:</strong> 50 inches (75th percentile)
+                                </div>
+                                <div style="margin-bottom: 8px;">
+                                    <strong>Weight:</strong> 55 lbs (60th percentile)
+                                </div>
+                                <div style="margin-bottom: 8px;">
+                                    <strong>Temperature:</strong> 98.6°F
+                                </div>
+                                <div>
+                                    <strong>Last Updated:</strong> March 5, 2024
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h3 style="margin-bottom: 16px;">Recent Encounters</h3>
+                            <div>
+                                <div style="margin-bottom: 12px;">
+                                    <strong>Annual Physical</strong>
+                                    <div style="color: #6c757d; font-size: 14px;">March 5, 2024 - Dr. Evans</div>
+                                </div>
+                                <div style="margin-bottom: 12px;">
+                                    <strong>Asthma Follow-up</strong>
+                                    <div style="color: #6c757d; font-size: 14px;">January 20, 2024 - Dr. Evans</div>
+                                </div>
+                                <div>
+                                    <strong>Allergy Consultation</strong>
+                                    <div style="color: #6c757d; font-size: 14px;">December 10, 2023 - Dr. Rodriguez</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule Management Section (Provider Only) -->
+            <div id="schedule" class="section provider-only" style="display: none;">
+                <div class="table-container">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                        <h2>Schedule Management</h2>
+                        <div style="display: flex; gap: 12px;">
+                            <button class="btn btn-outline">Week View</button>
+                            <button class="btn btn-outline">Month View</button>
+                            <button class="btn btn-primary">Block Time</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Calendar View -->
+                    <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; background: #D8DEE4; border: 1px solid #D8DEE4;">
+                        <!-- Calendar Header -->
+                        <div style="background: #4A90E2; color: white; padding: 12px; text-align: center; font-weight: 600;">Mon</div>
+                        <div style="background: #4A90E2; color: white; padding: 12px; text-align: center; font-weight: 600;">Tue</div>
+                        <div style="background: #4A90E2; color: white; padding: 12px; text-align: center; font-weight: 600;">Wed</div>
+                        <div style="background: #4A90E2; color: white; padding: 12px; text-align: center; font-weight: 600;">Thu</div>
+                        <div style="background: #4A90E2; color: white; padding: 12px; text-align: center; font-weight: 600;">Fri</div>
+                        <div style="background: #4A90E2; color: white; padding: 12px; text-align: center; font-weight: 600;">Sat</div>
+                        <div style="background: #4A90E2; color: white; padding: 12px; text-align: center; font-weight: 600;">Sun</div>
+                        
+                        <!-- Calendar Days -->
+                        <div style="background: white; padding: 12px; min-height: 100px; position: relative;">
+                            <div style="font-weight: 600; margin-bottom: 8px;">11</div>
+                            <div style="background: #50E3C2; color: white; padding: 4px 6px; border-radius: 4px; font-size: 12px; margin-bottom: 2px;">
+                                10:00 AM - Emma J.
+                            </div>
+                            <div style="background: #4A90E2; color: white; padding: 4px 6px; border-radius: 4px; font-size: 12px;">
+                                2:00 PM - Michael C.
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 12px; min-height: 100px;">
+                            <div style="font-weight: 600; margin-bottom: 8px;">12</div>
+                            <div style="background: #4A90E2; color: white; padding: 4px 6px; border-radius: 4px; font-size: 12px;">
+                                11:00 AM - Sarah W.
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 12px; min-height: 100px;">
+                            <div style="font-weight: 600; margin-bottom: 8px;">13</div>
+                        </div>
+                        <div style="background: white; padding: 12px; min-height: 100px;">
+                            <div style="font-weight: 600; margin-bottom: 8px;">14</div>
+                            <div style="background: #F5A623; color: white; padding: 4px 6px; border-radius: 4px; font-size: 12px;">
+                                Blocked - Conference
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 12px; min-height: 100px;">
+                            <div style="font-weight: 600; margin-bottom: 8px;">15</div>
+                        </div>
+                        <div style="background: #f8f9fa; padding: 12px; min-height: 100px;">
+                            <div style="font-weight: 600; margin-bottom: 8px; color: #6c757d;">16</div>
+                        </div>
+                        <div style="background: #f8f9fa; padding: 12px; min-height: 100px;">
+                            <div style="font-weight: 600; margin-bottom: 8px; color: #6c757d;">17</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Urgent Care Section (Parent Only) -->
+            <div id="urgent-care" class="section parent-only" style="display: none;">
+                <div class="table-container">
+                    <div style="text-align: center; padding: 40px;">
+                        <i data-feather="phone" style="width: 64px; height: 64px; color: #F5A623; margin-bottom: 24px;"></i>
+                        <h2 style="margin-bottom: 16px; color: #F5A623;">Urgent Care Tele-Triage</h2>
+                        <p style="font-size: 18px; color: #6c757d; margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                            Connect with the next available provider for urgent but non-emergency concerns. 
+                            Our medical team will assess your child's symptoms and provide immediate guidance.
+                        </p>
+                        <div style="display: flex; justify-content: center; gap: 16px; margin-bottom: 32px;">
+                            <button class="btn btn-warning" style="padding: 16px 32px; font-size: 18px;">
+                                <i data-feather="phone" style="margin-right: 8px; width: 20px; height: 20px;"></i>
+                                Request Urgent Care
+                            </button>
+                            <button class="btn btn-outline" style="padding: 16px 32px; font-size: 18px;">
+                                <i data-feather="info" style="margin-right: 8px; width: 20px; height: 20px;"></i>
+                                Learn More
+                            </button>
+                        </div>
+                        <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+                            <h3 style="margin-bottom: 16px; color: #495057;">When to use Urgent Care:</h3>
+                            <ul style="color: #6c757d; line-height: 1.8;">
+                                <li>Fever that won't break</li>
+                                <li>Persistent cough or difficulty breathing</li>
+                                <li>Severe pain or discomfort</li>
+                                <li>Unusual rash or skin irritation</li>
+                                <li>Digestive issues or persistent vomiting</li>
+                                <li>Concerns about medication reactions</li>
+                            </ul>
+                            <div style="background: #f8f9fa; padding: 16px; border-radius: 8px; margin-top: 24px;">
+                                <strong style="color: #dc3545;">For life-threatening emergencies, please call 911 immediately.</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Video Call Modal -->
+    <div id="video-call" class="video-container">
+        <div class="video-main">
+            <div class="video-placeholder">
+                <div style="text-align: center;">
+                    <i data-feather="video" style="width: 48px; height: 48px; margin-bottom: 12px;"></i>
+                    <div>Dr. Sarah Evans</div>
+                </div>
+            </div>
+            <div class="video-self">
+                <div style="text-align: center;">
+                    <i data-feather="user" style="width: 24px; height: 24px; margin-bottom: 8px;"></i>
+                    <div>You</div>
+                </div>
+            </div>
+        </div>
+        <div class="video-controls">
+            <button class="control-btn mic" title="Mute/Unmute">
+                <i data-feather="mic" style="width: 20px; height: 20px;"></i>
+            </button>
+            <button class="control-btn video" title="Start/Stop Video">
+                <i data-feather="video" style="width: 20px; height: 20px;"></i>
+            </button>
+            <button class="control-btn" style="background: #6c757d;" title="Chat">
+                <i data-feather="message-circle" style="width: 20px; height: 20px; color: white;"></i>
+            </button>
+            <button class="control-btn end" title="End Call" onclick="endVideoCall()">
+                <i data-feather="phone-off" style="width: 20px; height: 20px;"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Schedule Appointment Modal -->
+    <div id="schedule-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Schedule New Appointment</h3>
+                <button class="close-btn" onclick="hideModal('schedule-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Select Provider</label>
+                    <select class="form-input">
+                        <option>Dr. Sarah Evans - Pediatrics</option>
+                        <option>Dr. Michael Rodriguez - Allergist</option>
+                        <option>Dr. Lisa Chen - Dermatology</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Preferred Date</label>
+                    <input type="date" class="form-input" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Preferred Time</label>
+                    <select class="form-input">
+                        <option>9:00 AM</option>
+                        <option>10:00 AM</option>
+                        <option>11:00 AM</option>
+                        <option>2:00 PM</option>
+                        <option>3:00 PM</option>
+                        <option>4:00 PM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Reason for Visit</label>
+                    <textarea class="form-textarea" placeholder="Please describe the reason for this appointment..."></textarea>
+                </div>
+                <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                    <button class="btn btn-outline" onclick="hideModal('schedule-modal')">Cancel</button>
+                    <button class="btn btn-primary">Confirm Appointment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Note Modal (Provider) -->
+    <div id="new-note-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">New Clinical Note</h3>
+                <button class="close-btn" onclick="hideModal('new-note-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Patient</label>
+                    <input type="text" class="form-input" value="Emma Johnson" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Encounter Type</label>
+                    <select class="form-input">
+                        <option>Telehealth Visit</option>
+                        <option>Follow-up</option>
+                        <option>Consultation</option>
+                        <option>Urgent Care</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Clinical Notes</label>
+                    <textarea class="form-textarea" placeholder="Enter clinical notes here..." style="min-height: 200px;"></textarea>
+                </div>
+                <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                    <button class="btn btn-outline" onclick="hideModal('new-note-modal')">Cancel</button>
+                    <button class="btn btn-primary">Save Note</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feather Icons Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+    
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+
+        // Global state
+        let currentView = 'parent';
+        let currentSection = 'dashboard';
+
+        // View switching
+        function switchView(view) {
+            currentView = view;
+            document.body.className = `view-${view}`;
+            
+            // Update toggle buttons
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update page title based on view
+            if (view === 'parent') {
+                document.getElementById('page-title').textContent = 'Parent Dashboard';
+            } else {
+                document.getElementById('page-title').textContent = 'Provider Dashboard';
+            }
+        }
+
+        // Navigation
+        function showSection(sectionId) {
+            currentSection = sectionId;
+            
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).style.display = 'block';
+            
+            // Update navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+            
+            // Update page title
+            const sectionTitles = {
+                'dashboard': currentView === 'parent' ? 'Parent Dashboard' : 'Provider Dashboard',
+                'child-health': "My Child's Health",
+                'appointments': 'Appointments',
+                'messages': 'Messages',
+                'patients': 'Patient Context',
+                'schedule': 'Schedule Management',
+                'urgent-care': 'Urgent Care'
+            };
+            
+            document.getElementById('page-title').textContent = sectionTitles[sectionId] || 'Dashboard';
+        }
+
+        // Modal functions
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function hideModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Video call functions
+        function startVideoCall() {
+            document.getElementById('video-call').classList.add('active');
+        }
+
+        function endVideoCall() {
+            document.getElementById('video-call').classList.remove('active');
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation click handlers
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.getAttribute('data-section');
+                    showSection(sectionId);
+                });
+            });
+
+            // Modal close on backdrop click
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                    }
+                });
+            });
+
+            // Video call close on backdrop click
+            document.getElementById('video-call').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    endVideoCall();
+                }
+            });
+
+            // Initialize view
+            switchView('parent');
+        });
+    </script>
+</body>
+</html>
